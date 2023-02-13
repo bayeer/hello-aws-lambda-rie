@@ -1,0 +1,16 @@
+{
+    "name": "bayeer/hello-lamda-rie",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Bayeer\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Bayeer",
+            "email": "bairdarmaev@gmail.com"
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  #light service: php
+  hello-lambda-rie:
+    image: hello-lambda-rie
+    container_name: hello-lambda-rie 
+    build:
+      context: .
+      dockerfile: ./docker/lambda.Dockerfile
+    working_dir: /var/task
+    env_file:
+      - ./.env
+    ports:
+      - target: 8080
+        published: 9000
+        protocol: tcp
+        mode: host
+    entrypoint: "/aws-lambda/aws-lambda-rie"
+    volumes:
+        - ./:/var/task
