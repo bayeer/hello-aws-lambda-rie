@@ -1,3 +1,0 @@
-#!/bin/sh
-
-php /opt/bootstrap.php

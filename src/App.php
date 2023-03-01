@@ -6,13 +6,16 @@ namespace Bayeer;
 
 class App
 {
-    public function hello(array $payload): array
+    public function sum(array $payload): array
     {
-        echo '[*] function invocated...', PHP_EOL;
-
-        var_dump($payload);
         $data = json_decode($payload['body'], true);
 
-        return ['foo' => 1, 'field' => $data['field']];
+        $a = (int)$data['a'];
+        $b = (int)$data['b'];
+
+        return [
+            'input' => $data,
+            'output' => $a + $b
+        ];
     }
 }

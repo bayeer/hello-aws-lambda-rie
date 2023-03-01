@@ -1,14 +1,15 @@
 {
-    "name": "bayeer/hello-lamda-rie",
+    "name": "bayeer/hello-custom-lambda-runtime",
     "type": "project",
     "license": "MIT",
     "require": {
-        "php": ">=7.4",
+        "php": ">=8.0",
         "ext-curl": "*"
     },
     "autoload": {
         "psr-4": {
-            "Bayeer\\": "src/"
+            "Bayeer\\": "src/",
+            "Bayeer\\SimpleLambda\\": "lib/"
         }
     },
     "authors": [

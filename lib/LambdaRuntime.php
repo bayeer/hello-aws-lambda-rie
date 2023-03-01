@@ -2,17 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Bayeer;
+namespace Bayeer\SimpleLambda;
+
+use Exception;
 
 class LambdaRuntime
 {
-    public function __construct(private string $apiUrl)
-    {
-        //
-    }
+    public function __construct(private string $apiUrl) {}
 
-    public static function loop(App $app): void
+    public static function loop(string $className): void
     {
+        $app = new $className();
+
         $runtime = new static($_ENV['AWS_LAMBDA_RUNTIME_API']);
 
         // This is the request processing loop. Barring unrecoverable failure, this loop runs until the environment shuts down.
@@ -140,7 +141,8 @@ class LambdaRuntime
         curl_setopt($handler, CURLOPT_POSTFIELDS, $json);
 
         curl_setopt($handler, CURLOPT_HTTPHEADER, [
-            'Content-Type: application/json',
+            'Accept: application/json',
+            'Content-Type: application/json; charset=utf-8',
             'Content-Length: '.strlen($json),
         ]);
 
